@@ -1,0 +1,80 @@
+{
+  "template_id": "social_shorts_01",
+  "name": "YouTube Shorts",
+  "category": "Social",
+  "thumbnail": "gradient_yt",
+  "duration": 60.0,
+  "fps": 30.0,
+  "resolution": [
+    1080,
+    1920
+  ],
+  "tracks": [
+    {
+      "track_id": 1,
+      "type": "video",
+      "clips": [
+        {
+          "slot_id": 1,
+          "placeholder": true,
+          "position": 0.0,
+          "duration": 10.0,
+          "effects": [],
+          "color_grade": null,
+          "transition_in": "cut",
+          "transition_out": "cut"
+        },
+        {
+          "slot_id": 2,
+          "placeholder": true,
+          "position": 10.0,
+          "duration": 10.0,
+          "effects": [],
+          "color_grade": null,
+          "transition_in": "cut",
+          "transition_out": "cut"
+        },
+        {
+          "slot_id": 3,
+          "placeholder": true,
+          "position": 20.0,
+          "duration": 10.0,
+          "effects": [],
+          "color_grade": null,
+          "transition_in": "cut",
+          "transition_out": "cut"
+        },
+        {
+          "slot_id": 4,
+          "placeholder": true,
+          "position": 30.0,
+          "duration": 10.0,
+          "effects": [],
+          "color_grade": null,
+          "transition_in": "cut",
+          "transition_out": "cut"
+        },
+        {
+          "slot_id": 5,
+          "placeholder": true,
+          "position": 40.0,
+          "duration": 10.0,
+          "effects": [],
+          "color_grade": null,
+          "transition_in": "cut",
+          "transition_out": "cut"
+        },
+        {
+          "slot_id": 6,
+          "placeholder": true,
+          "position": 50.0,
+          "duration": 10.0,
+          "effects": [],
+          "color_grade": null,
+          "transition_in": "cut",
+          "transition_out": "cut"
+        }
+      ]
+    }
+  ]
+}

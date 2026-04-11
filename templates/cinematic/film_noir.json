@@ -1,0 +1,80 @@
+{
+  "template_id": "cinematic_noir_01",
+  "name": "Film Noir",
+  "category": "Cinematic",
+  "thumbnail": "gradient_noir",
+  "duration": 60.0,
+  "fps": 24.0,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "tracks": [
+    {
+      "track_id": 1,
+      "type": "video",
+      "clips": [
+        {
+          "slot_id": 1,
+          "placeholder": true,
+          "position": 0.0,
+          "duration": 10.0,
+          "effects": [],
+          "color_grade": "bw_lut",
+          "transition_in": "slow_crossfade",
+          "transition_out": "slow_crossfade"
+        },
+        {
+          "slot_id": 2,
+          "placeholder": true,
+          "position": 10.0,
+          "duration": 10.0,
+          "effects": [],
+          "color_grade": "bw_lut",
+          "transition_in": "slow_crossfade",
+          "transition_out": "slow_crossfade"
+        },
+        {
+          "slot_id": 3,
+          "placeholder": true,
+          "position": 20.0,
+          "duration": 10.0,
+          "effects": [],
+          "color_grade": "bw_lut",
+          "transition_in": "slow_crossfade",
+          "transition_out": "slow_crossfade"
+        },
+        {
+          "slot_id": 4,
+          "placeholder": true,
+          "position": 30.0,
+          "duration": 10.0,
+          "effects": [],
+          "color_grade": "bw_lut",
+          "transition_in": "slow_crossfade",
+          "transition_out": "slow_crossfade"
+        },
+        {
+          "slot_id": 5,
+          "placeholder": true,
+          "position": 40.0,
+          "duration": 10.0,
+          "effects": [],
+          "color_grade": "bw_lut",
+          "transition_in": "slow_crossfade",
+          "transition_out": "slow_crossfade"
+        },
+        {
+          "slot_id": 6,
+          "placeholder": true,
+          "position": 50.0,
+          "duration": 10.0,
+          "effects": [],
+          "color_grade": "bw_lut",
+          "transition_in": "slow_crossfade",
+          "transition_out": "slow_crossfade"
+        }
+      ]
+    }
+  ]
+}

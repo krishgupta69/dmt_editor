@@ -1,0 +1,100 @@
+{
+  "template_id": "wedding_romantic_01",
+  "name": "Romantic Wedding",
+  "category": "Wedding",
+  "thumbnail": "gradient_wedding",
+  "duration": 120.0,
+  "fps": 30.0,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "tracks": [
+    {
+      "track_id": 1,
+      "type": "video",
+      "clips": [
+        {
+          "slot_id": 1,
+          "placeholder": true,
+          "position": 0.0,
+          "duration": 15.0,
+          "effects": [],
+          "color_grade": "soft_pink_lut",
+          "transition_in": "fade",
+          "transition_out": "fade"
+        },
+        {
+          "slot_id": 2,
+          "placeholder": true,
+          "position": 15.0,
+          "duration": 15.0,
+          "effects": [],
+          "color_grade": "soft_pink_lut",
+          "transition_in": "fade",
+          "transition_out": "fade"
+        },
+        {
+          "slot_id": 3,
+          "placeholder": true,
+          "position": 30.0,
+          "duration": 15.0,
+          "effects": [],
+          "color_grade": "soft_pink_lut",
+          "transition_in": "fade",
+          "transition_out": "fade"
+        },
+        {
+          "slot_id": 4,
+          "placeholder": true,
+          "position": 45.0,
+          "duration": 15.0,
+          "effects": [],
+          "color_grade": "soft_pink_lut",
+          "transition_in": "fade",
+          "transition_out": "fade"
+        },
+        {
+          "slot_id": 5,
+          "placeholder": true,
+          "position": 60.0,
+          "duration": 15.0,
+          "effects": [],
+          "color_grade": "soft_pink_lut",
+          "transition_in": "fade",
+          "transition_out": "fade"
+        },
+        {
+          "slot_id": 6,
+          "placeholder": true,
+          "position": 75.0,
+          "duration": 15.0,
+          "effects": [],
+          "color_grade": "soft_pink_lut",
+          "transition_in": "fade",
+          "transition_out": "fade"
+        },
+        {
+          "slot_id": 7,
+          "placeholder": true,
+          "position": 90.0,
+          "duration": 15.0,
+          "effects": [],
+          "color_grade": "soft_pink_lut",
+          "transition_in": "fade",
+          "transition_out": "fade"
+        },
+        {
+          "slot_id": 8,
+          "placeholder": true,
+          "position": 105.0,
+          "duration": 15.0,
+          "effects": [],
+          "color_grade": "soft_pink_lut",
+          "transition_in": "fade",
+          "transition_out": "fade"
+        }
+      ]
+    }
+  ]
+}

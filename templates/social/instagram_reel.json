@@ -1,0 +1,60 @@
+{
+  "template_id": "social_ig_01",
+  "name": "Instagram Reel",
+  "category": "Social",
+  "thumbnail": "gradient_ig",
+  "duration": 30.0,
+  "fps": 30.0,
+  "resolution": [
+    1080,
+    1920
+  ],
+  "tracks": [
+    {
+      "track_id": 1,
+      "type": "video",
+      "clips": [
+        {
+          "slot_id": 1,
+          "placeholder": true,
+          "position": 0.0,
+          "duration": 7.5,
+          "effects": [],
+          "color_grade": "soft_grade",
+          "transition_in": "cut",
+          "transition_out": "cut"
+        },
+        {
+          "slot_id": 2,
+          "placeholder": true,
+          "position": 7.5,
+          "duration": 7.5,
+          "effects": [],
+          "color_grade": "soft_grade",
+          "transition_in": "cut",
+          "transition_out": "cut"
+        },
+        {
+          "slot_id": 3,
+          "placeholder": true,
+          "position": 15.0,
+          "duration": 7.5,
+          "effects": [],
+          "color_grade": "soft_grade",
+          "transition_in": "cut",
+          "transition_out": "cut"
+        },
+        {
+          "slot_id": 4,
+          "placeholder": true,
+          "position": 22.5,
+          "duration": 7.5,
+          "effects": [],
+          "color_grade": "soft_grade",
+          "transition_in": "cut",
+          "transition_out": "cut"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "template_id": "social_tiktok_01",
+  "name": "TikTok Viral",
+  "category": "Social",
+  "thumbnail": "gradient_tiktok",
+  "duration": 15.0,
+  "fps": 30.0,
+  "resolution": [
+    1080,
+    1920
+  ],
+  "tracks": [
+    {
+      "track_id": 1,
+      "type": "video",
+      "clips": [
+        {
+          "slot_id": 1,
+          "placeholder": true,
+          "position": 0.0,
+          "duration": 3.0,
+          "effects": [],
+          "color_grade": null,
+          "transition_in": "cut",
+          "transition_out": "cut"
+        },
+        {
+          "slot_id": 2,
+          "placeholder": true,
+          "position": 3.0,
+          "duration": 3.0,
+          "effects": [],
+          "color_grade": null,
+          "transition_in": "cut",
+          "transition_out": "cut"
+        },
+        {
+          "slot_id": 3,
+          "placeholder": true,
+          "position": 6.0,
+          "duration": 3.0,
+          "effects": [],
+          "color_grade": null,
+          "transition_in": "cut",
+          "transition_out": "cut"
+        },
+        {
+          "slot_id": 4,
+          "placeholder": true,
+          "position": 9.0,
+          "duration": 3.0,
+          "effects": [],
+          "color_grade": null,
+          "transition_in": "cut",
+          "transition_out": "cut"
+        },
+        {
+          "slot_id": 5,
+          "placeholder": true,
+          "position": 12.0,
+          "duration": 3.0,
+          "effects": [],
+          "color_grade": null,
+          "transition_in": "cut",
+          "transition_out": "cut"
+        }
+      ]
+    }
+  ]
+}
