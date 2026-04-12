@@ -128,10 +128,8 @@ def load_stylesheet() -> str:
 def main():
     app = QApplication(sys.argv)
     
-    # Optional: Load Inter font from system or resources if available
-    font_db = QFontDatabase()
-    # Replace with path to actual Inter font if bundling
-    # font_id = font_db.addApplicationFont("resources/Inter-Regular.ttf")
+    # QFontDatabase is static-only in Qt6
+    # To bundle Inter, use: QFontDatabase.addApplicationFont("resources/Inter-Regular.ttf")
     app.setFont(QFont("Inter", 10))
     app.setStyleSheet(load_stylesheet())
 

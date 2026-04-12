@@ -1,0 +1,11 @@
+{
+  "hooks": {
+    "SessionStart": [],
+    "PostToolUse": [],
+    "PreToolUse": []
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "node \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/gsd-statusline.js"
+  }
+}

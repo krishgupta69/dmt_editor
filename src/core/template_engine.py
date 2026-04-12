@@ -2,15 +2,10 @@ import os
 import json
 import glob
 
-try:
-    import openshot
-    OPENSHOT_AVAILABLE = True
-except ImportError:
-    OPENSHOT_AVAILABLE = False
-    class MockTimeline:
-        pass
-    class openshot:
-        Timeline = MockTimeline
+from core.openshot_bridge import openshot
+
+OPENSHOT_AVAILABLE = openshot.__name__ != 'core.openshot_mock'
+
 
 class TemplateEngine:
     def __init__(self, templates_dir="templates"):
