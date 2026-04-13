@@ -54,30 +54,27 @@ class TemplateEngine:
         if len(media_paths) < slots_needed:
             raise ValueError(f"Template requires {slots_needed} media files, but {len(media_paths)} were provided.")
 
-        if OPENSHOT_AVAILABLE:
-            width, height = template['resolution']
-            timeline = openshot.Timeline(width, height, openshot.Fraction(int(template['fps']), 1), 
-                                       int(template['fps']), 44100, 2)
-            timeline.Open()
-            # In a full implementation, we traverse media_paths and create openshot.Clip 
-            # and openshot.Reader, placing them at position according to clip['position']
-            media_idx = 0
-            for track in template.get('tracks', []):
-                track_id = track['track_id']
-                for clip_data in track.get('clips', []):
-                    if clip_data.get('placeholder', False):
-                        path = media_paths[media_idx]
-                        media_idx += 1
-                        # c = openshot.Clip(path)
-                        # c.Position(clip_data['position'])
-                        # c.Layer(track_id)
-                        # timeline.AddClip(c)
-                        # Apply fx based on clip_data
-            return timeline
-        else:
-            # Fallback mock for UI development
+        width, height = template['resolution']
+        timeline = openshot.Timeline(width, height, openshot.Fraction(int(template['fps']), 1), 
+                                     int(template['fps']), 44100, 2)
+        timeline.Open()
+        
+        media_idx = 0
+        for track in template.get('tracks', []):
+            track_id = track['track_id']
+            for clip_data in track.get('clips', []):
+                if clip_data.get('placeholder', False):
+                    path = media_paths[media_idx]
+                    media_idx += 1
+                    c = openshot.Clip(path)
+                    c.Position(clip_data.get('position', 0.0))
+                    c.Layer(track_id)
+                    timeline.AddClip(c)
+                    
+        if not OPENSHOT_AVAILABLE:
             print(f"Mocking template application for {template['name']} using {len(media_paths)} files.")
-            mock = openshot.Timeline()
-            mock.template_data = template
-            mock.media_paths = media_paths
-            return mock
+            # Still attach these for the UI to read if needed
+            timeline.template_data = template
+            timeline.media_paths = media_paths
+            
+        return timeline

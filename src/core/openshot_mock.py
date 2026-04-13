@@ -114,6 +114,11 @@ class FFmpegWriter:
         pass
 
 
+class DummyImage:
+    def __init__(self):
+        # Default 1920x1080 pure black frame
+        self.data = bytearray([0, 0, 0] * 1920 * 1080)
+
 class Frame:
     def __init__(self):
         self.number = 0
@@ -126,6 +131,9 @@ class Frame:
 
     def GetHeight(self):
         return 1080
+
+    def GetImage(self):
+        return DummyImage()
 
 
 class Keyframe:

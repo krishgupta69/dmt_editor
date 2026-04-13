@@ -8,7 +8,7 @@ import math
 from PyQt6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QPushButton
 from PyQt6.QtCore import Qt, QPointF, QRectF, pyqtSignal
 from PyQt6.QtGui import QPainter, QPen, QPainterPath, QColor, QBrush, QMouseEvent
-
+from typing import List, Dict, Optional
 
 class CurvesCanvas(QWidget):
     """200x200 canvas with grid, bezier curve, and draggable control points."""
@@ -25,13 +25,13 @@ class CurvesCanvas(QWidget):
 
         # Points stored as normalized (0..1, 0..1), y=0 is bottom
         # Default: bottom-left to top-right diagonal
-        self._points: dict[str, list[list[float]]] = {
+        self._points: Dict[str, List[List[float]]] = {
             "Master": [[0.0, 0.0], [1.0, 1.0]],
             "R": [[0.0, 0.0], [1.0, 1.0]],
             "G": [[0.0, 0.0], [1.0, 1.0]],
             "B": [[0.0, 0.0], [1.0, 1.0]],
         }
-        self._dragging_idx: int | None = None
+        self._dragging_idx: Optional[int] = None
 
     @property
     def points(self):
@@ -41,10 +41,10 @@ class CurvesCanvas(QWidget):
     def points(self, pts):
         self._points[self.channel] = pts
 
-    def _to_screen(self, p: list[float]) -> QPointF:
+    def _to_screen(self, p: List[float]) -> QPointF:
         return QPointF(p[0] * self.CANVAS_SIZE, (1.0 - p[1]) * self.CANVAS_SIZE)
 
-    def _to_norm(self, sp: QPointF) -> list[float]:
+    def _to_norm(self, sp: QPointF) -> List[float]:
         x = max(0.0, min(1.0, sp.x() / self.CANVAS_SIZE))
         y = max(0.0, min(1.0, 1.0 - sp.y() / self.CANVAS_SIZE))
         return [x, y]
@@ -201,7 +201,7 @@ class CurvesEditor(QWidget):
         # Channel tabs
         tabs_layout = QHBoxLayout()
         tabs_layout.setSpacing(2)
-        self._tab_btns: list[QPushButton] = []
+        self._tab_btns: List[QPushButton] = []
         for ch in ["Master", "R", "G", "B"]:
             btn = QPushButton(ch)
             btn.setCheckable(True)

@@ -73,8 +73,21 @@ class ExportDialog(QDialog):
 
         self.open_folder_btn = QPushButton("Open Folder")
         self.open_folder_btn.setVisible(False)
-        self.open_folder_btn.clicked.connect(lambda: print("Opening folder..."))
+        self.open_folder_btn.clicked.connect(self._open_folder)
         layout.addWidget(self.open_folder_btn)
+
+    def _open_folder(self):
+        import subprocess, os, sys
+        folder = self.loc_input.text()
+        filename = self.filename_input.text()
+        if not filename.endswith(".mp4"):
+            filename += ".mp4"
+        path = os.path.join(folder, filename)
+        
+        if sys.platform == 'win32':
+            subprocess.Popen(f'explorer /select,"{os.path.normpath(path)}"')
+        else:
+            subprocess.Popen(["xdg-open", os.path.dirname(path)])
 
     def _select_folder(self):
         folder = QFileDialog.getExistingDirectory(self, "Select Export Folder")
@@ -82,8 +95,64 @@ class ExportDialog(QDialog):
             self.loc_input.setText(folder)
 
     def _start_export(self):
+        from core.export_worker import ExportWorker
+        from PyQt6.QtWidgets import QMessageBox
+        import os
+        
         self.export_btn.setEnabled(False)
-        self.progress_label.setText("Exporting... ETA: calculating")
-        self.progress_bar.setRange(0, 0) # Indeterminate state block
-        # Actual export logic should connect to openshot FFmpegWriter here
-        # E.g. trigger an external QThread
+        self.progress_label.setText("Exporting...")
+        self.progress_bar.setRange(0, 100)
+        self.progress_bar.setValue(0)
+        
+        preset_map = {
+            "YouTube 1080p (1920x1080 H.264 8Mbps AAC 320k)": "YouTube 1080p",
+            "YouTube 4K (3840x2160)": "YouTube 4K",
+            "TikTok 9:16 (1080x1920 H.264 6Mbps)": "TikTok / Reels",
+            "Twitter 720p": "Twitter / X",
+            "Discord (Under 8MB/25MB)": "Discord",
+            "Custom": "Custom"
+        }
+        
+        preset = preset_map.get(self.preset_combo.currentText(), "YouTube 1080p")
+        
+        folder = self.loc_input.text()
+        filename = self.filename_input.text()
+        if not filename.endswith(".mp4"):
+            filename += ".mp4"
+        path = os.path.join(folder, filename)
+        
+        main_win = self.window()
+        if not hasattr(main_win, "project") or not main_win.project:
+            QMessageBox.critical(self, "Error", "Project not initialized")
+            self.export_btn.setEnabled(True)
+            return
+            
+        self.worker = ExportWorker(main_win.project.timeline, path, preset)
+        self.worker.progress.connect(self.progress_bar.setValue)
+        
+        def on_finished(p):
+            self.progress_bar.setValue(100)
+            self.progress_label.setText("✅ Export complete!")
+            self.open_folder_btn.setVisible(True)
+            self.export_btn.setEnabled(True)
+            
+        def on_error(msg):
+            QMessageBox.critical(self, "Export Failed", msg)
+            self.progress_bar.setValue(0)
+            self.export_btn.setEnabled(True)
+            
+        self.worker.finished.connect(on_finished)
+        self.worker.error.connect(on_error)
+        
+        # Override cancel button to actually stop FFmpeg generator
+        self.cancel_btn.clicked.disconnect()
+        def cancel_export():
+            if hasattr(self, 'worker'):
+                self.worker.cancel()
+                self.progress_label.setText("Export Cancelled.")
+                self.export_btn.setEnabled(True)
+                self.cancel_btn.clicked.disconnect(cancel_export)
+                self.cancel_btn.clicked.connect(self.reject)
+        self.cancel_btn.clicked.connect(cancel_export)
+        
+        self.worker.start()

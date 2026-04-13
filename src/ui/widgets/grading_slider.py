@@ -10,12 +10,14 @@ from PyQt6.QtCore import Qt, QTimer, pyqtSignal
 from PyQt6.QtGui import QMouseEvent
 
 
+from typing import Optional
+
 class GradingSlider(QWidget):
     """A labeled slider with value display, reset, and debounced signal."""
     valueChanged = pyqtSignal(str, int)  # (param_name, value)
 
     def __init__(self, label: str, min_val: int = -100, max_val: int = 100,
-                 default: int = 0, track_gradient: str | None = None, parent=None):
+                 default: int = 0, track_gradient: Optional[str] = None, parent=None):
         super().__init__(parent)
         self.param_name = label
         self.default_val = default
